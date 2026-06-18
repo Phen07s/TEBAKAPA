@@ -4,27 +4,30 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>Birthday Site 🎁</title>
+    <title>GS Birthday Site 🎁</title>
     <meta name="language" content="zh-CN">
     <meta name="description" content="A special birthday surprise! A beautiful interactive site with animations, music, and memories!">
 
+    <!-- Favicon and Icons -->
     <link rel="icon" href="./image/logo.png" type="image/png">
     <link rel="apple-touch-icon" href="./image/logo.png">
 
+    <!-- Open Graph Meta Tags -->
     <meta property="og:title" content="GS Birthday Site 🎁">
     <meta property="og:description"
         content="A special birthday surprise! A beautiful interactive site with animations, music, and memories!">
     <meta property="og:image" content="https://happybirthdaydeargift.vercel.app/image/logo.png">
+    <!-- <meta property="og:url" content="https://happybirthdaydeargift.vercel.app/?websiteId=686d4ef53c910ba1bee5ec5c"> -->
     <meta property="og:type" content="website">
 
+    <!-- Twitter Card Meta Tags -->
     <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:title" content="GS Birthday Site 🎁">
     <meta name="twitter:description"
         content="A special birthday surprise! A beautiful interactive site with animations, music, and memories!">
     <meta name="twitter:image" content="https://happybirthdaydeargift.vercel.app/image/birthday-gift.jpg">
 
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <link rel="stylesheet" href="css/index.css">    
+    <link rel="stylesheet" href="./css/index.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css?family=Pacifico&display=swap" rel="stylesheet">
@@ -33,9 +36,9 @@
 
 <body>
 
+
     <canvas id="matrix-rain" style="display: none;"></canvas>
     <canvas style="position:absolute;width:100%;height:100%;z-index:9999;display:none;" class="canvas"></canvas>
-    
     <div class="overlay">
         <div class="stars-container" id="starsContainer"></div>
         <img id="gift-image" src="happy.gif"
@@ -56,6 +59,7 @@
             ⚙
         </button>
 
+        <!-- Settings hint element -->
         <div id="settingsHint" class="settings-hint">
             <div class="hint-text" data-i18n="settingsHint">ấn vào đây để setting theo ý muốn</div>
         </div>
@@ -117,7 +121,7 @@
         </div>
 
         <audio id="birthdayAudio" loop autoplay>
-            <source src="./music/Sempurna.mp3" type="audio/mpeg">
+            <source src="./music/pika.mp3" type="audio/mpeg">
             Your browser does not support the audio element.
         </audio>
 
@@ -131,60 +135,14 @@
             </div>
         </div>
 
+        <!-- Fullscreen button for Android -->
         <button id="fullscreenBtn" style="position: fixed; bottom: 20px; right: 20px; z-index: 990010; padding: 10px 18px; border-radius: 8px; border: none; background: #222; color: #fff; font-size: 16px; box-shadow: 0 2px 8px rgba(0,0,0,0.15); cursor: pointer; display: none;">
             <img style="width: 20px; height: 20px; vertical-align: middle;" src="./image/full.png" alt="Fullscreen">
         </button>
-    </div>
-
-    <script src="./lang.js"></script>
-    <script src="./jscp/settings.js"></script>
-    <script src="./jscp/main.js"></script>
-    <script src="./jscp/ui.js"></script>
-
-    <script>
-        (function() {
-            var musikId = 'birthdayAudio';
-            
-            function mainkanMusik() {
-                var musik = document.getElementById(musikId);
-                if (musik) {
-                    musik.muted = false; 
-                    musik.play().then(function() {
-                        console.log("iOS Autoplay Berhasil tembus!");
-                        copotPelatuk();
-                    }).catch(function(err) {
-                        console.log("Menunggu sentuhan pertama untuk memutar musik...", err);
-                    });
-                }
-            }
-
-            function copotPelatuk() {
-                window.removeEventListener('click', mainkanMusik, true);
-                window.removeEventListener('touchstart', mainkanMusik, true);
-                window.removeEventListener('touchend', mainkanMusik, true);
-                
-                var overlay = document.querySelector('.overlay');
-                if (overlay) {
-                    overlay.removeEventListener('touchstart', mainkanMusik, true);
-                    overlay.removeEventListener('click', mainkanMusik, true);
-                }
-            }
-
-            // Memicu interaksi global tercepat dengan Capturing Phase (true)
-            window.addEventListener('click', mainkanMusik, true);
-            window.addEventListener('touchstart', mainkanMusik, true);
-            window.addEventListener('touchend', mainkanMusik, true);
-
-            document.addEventListener('DOMContentLoaded', function() {
-                var overlay = document.querySelector('.overlay');
-                if (overlay) {
-                    overlay.addEventListener('touchstart', mainkanMusik, true);
-                    overlay.addEventListener('click', mainkanMusik, true);
-                }
-                mainkanMusik(); 
-            });
-        })();
-    </script>
+        <script src="./lang.js"></script>
+        <script src="./jscp/settings.js"></script>
+        <script src="./jscp/main.js"></script>
+        <script src="./jscp/ui.js"></script>
 </body>
 
 </html>
